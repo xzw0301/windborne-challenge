@@ -1,0 +1,26 @@
+body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', sans-serif; }
+#map { height: 100vh; width: 100vw; z-index: 1; }
+
+#sidebar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+h1 { font-size: 1.2rem; margin-top: 0; color: #2c3e50; }
+.stat-box { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.stat-label { font-size: 0.8rem; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-value { font-size: 1.1rem; font-weight: bold; color: #2c3e50; }
+.loading { color: #e67e22; font-style: italic; }
+.balloon-icon { text-align: center; line-height: 20px; font-size: 20px; }
+.badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; color: white; }
+.bg-green { background-color: #27ae60; }
+.bg-red { background-color: #c0392b; }

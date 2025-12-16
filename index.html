@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windborne Drift Validator</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div id="sidebar">
+        <h1>🎈 Drift Validator</h1>
+        <p style="font-size: 0.9rem; color: #666;">
+            Comparing live Windborne balloon telemetry against Open-Meteo wind models.
+        </p>
+        
+        <div id="status" class="stat-box">
+            <div class="stat-label">System Status</div>
+            <div class="stat-value loading" id="status-text">Initializing...</div>
+        </div>
+
+        <div id="metrics" style="display:none;">
+            <div class="stat-box">
+                <div class="stat-label">Active Balloons</div>
+                <div class="stat-value" id="balloon-count">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Data Health</div>
+                <div class="stat-value" id="corrupt-count">0% Corrupted</div>
+            </div>
+        </div>
+        
+        <div style="font-size: 0.75rem; color: #999; margin-top: 20px;">
+            <strong>Why Open-Meteo?</strong> I chose the Open-Meteo API because it provides high-resolution hourly wind vectors without an API key.
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script src="app.js"></script>
+</body>
+</html>
