@@ -3,45 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windborne Drift Validator</title>
-    
+    <title>Windborne Constellation | Drift Monitor</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id="sidebar">
-        <h1>🎈 Drift Validator</h1>
-        <p style="font-size: 0.9rem; color: #666;">
-            Comparing live Windborne balloon telemetry against Open-Meteo wind models.
-        </p>
-        
-        <div id="status" class="stat-box">
-            <div class="stat-label">System Status</div>
-            <div class="stat-value loading" id="status-text">Initializing...</div>
+    <aside id="left-sidebar">
+        <div class="header">
+            <h2>🎈 Drift Monitor</h2>
+            <div id="status-tag"><span class="pulse"></span> Live Telemetry</div>
         </div>
 
-        <div id="metrics" style="display:none;">
-            <div class="stat-box">
-                <div class="stat-label">Active Balloons</div>
-                <div class="stat-value" id="balloon-count">0</div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">ACTIVE</div>
+                <div id="active-count" class="stat-val">15 Tracked</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-label">Data Health</div>
-                <div class="stat-value" id="corrupt-count">0% Corrupted</div>
+            <div class="stat-card">
+                <div class="stat-label">VALID DATA</div>
+                <div id="points-display" class="stat-val">0% (0 pts)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">CORRUPT</div>
+                <div id="corrupt-count" class="stat-val">0 Files</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">MATCH RATE</div>
+                <div id="match-rate" class="stat-val">--%</div>
+            </div>   
+        </div>
+
+        <div class="list-container">
+            <h3>Balloon Fleet</h3>
+            <div id="balloon-list">
+                <div class="loading">Fetching constellation...</div>
             </div>
         </div>
-        
-        <div style="font-size: 0.75rem; color: #999; margin-top: 20px;">
-            <strong>Why Open-Meteo?</strong> I chose the Open-Meteo API because it provides high-resolution hourly wind vectors without an API key.
-        </div>
-    </div>
+    </aside>
 
-    <div id="map"></div>
+    <main id="map-container">
+        <div id="map"></div>
+    </main>
+
+    <aside id="right-sidebar">
+        <div id="empty-state">
+            <p>Select a balloon to view vector analysis</p>
+        </div>
+        <div id="details-content" style="display: none;">
+            <h3 id="selected-id">Balloon #--</h3>
+            
+            <div class="detail-card">
+                <small>POSITION</small>
+                <div id="det-pos">--</div>
+            </div>
+
+            <div class="detail-card">
+                <small>ALTITUDE</small>
+                <div id="det-alt">-- m</div>
+            </div>
+
+            <div class="vector-section">
+                <h4>VECTOR COMPARISON</h4>
+                <div class="vector-grid">
+                    <div class="v-label">Balloon Speed</div>
+                    <div id="v-ball" class="v-val">-- km/h</div>
+                    <div class="v-label">Wind Forecast</div>
+                    <div id="v-wind" class="v-val">-- km/h</div>
+                </div>
+                <div id="match-badge">QUALITY: --</div>
+            </div>
+
+            <div class="data-source">
+                <p>Source: Open-Meteo GFS 0.25°</p>
+            </div>
+        </div>
+    </aside>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
     <script src="app.js"></script>
 </body>
 </html>
